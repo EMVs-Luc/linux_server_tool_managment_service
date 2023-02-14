@@ -1,0 +1,54 @@
+<div class="background">
+  <div class="center-div">
+    <div class="border-case">
+      <h1>Login</h1>
+
+      <br>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm)">
+
+        <div style="text-align: left; width: 75%; padding-left: 21%">
+          <div>
+            <label>
+              E-Mail:
+              <input formControlName="email" placeholder="E-Mail">
+            </label>
+            <div class="warning" *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+              Bitte geben sie eine gültige Email - Adresse an
+            </div>
+          </div>
+
+          <br>
+          <br>
+
+          <div>
+            <label>
+              Password:
+              <input type="password" formControlName="password" placeholder="Secret">
+            </label>
+            <div class="warning" *ngIf="loginForm.get('password').invalid">
+              Geben sie ein Passwort an
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      </form>
+
+
+      <div  *ngIf="showError" class="warning">
+        {{errorMessage}}
+      </div>
+
+
+      <br>
+
+
+
+
+    </div>
+  </div>
+</div>
